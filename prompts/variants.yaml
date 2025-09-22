@@ -1,0 +1,58 @@
+﻿defaults:
+  model: gemini-1.5-flash
+  max_output_tokens: 256
+  temperature: 0.7
+
+variants:
+  - id: baseline
+    title: Baseline (system + plain task)
+    applies_to: [summarize, classify]
+    system: |-
+      You are a precise, reliable assistant.
+      - Make assumptions explicit.
+      - Keep answers concise unless asked for depth.
+    prompt_template: |-
+      {task}
+
+      Input:
+      {input}
+
+  - id: rubric
+    title: Rubric-constrained (one sentence, <=25 words)
+    applies_to: [summarize]
+    prompt_template: |-
+      {task}
+
+      Input:
+      {input}
+
+      Follow this rubric:
+      - One sentence
+      - <= 25 words
+      - Start with "Summary:"
+
+  - id: fewshot
+    title: Few-shot (2 examples)
+    applies_to: [summarize]
+    system: |-
+      You are a precise, reliable assistant.
+    few_shots:
+      - user: "Summarize: 'The meeting moved to Friday 3pm PST.'"
+        model: "Summary: Meeting rescheduled to Friday, 3:00 PM PST."
+      - user: "Summarize: 'Board meeting Thursday 10am PT, Zoom link sent.'"
+        model: "Summary: Board meets Thursday, 10:00 AM PT; Zoom link distributed."
+    prompt_template: |-
+      Summarize in <=25 words:
+
+      {input}
+
+  - id: json_classify
+    title: JSON-only classification
+    applies_to: [classify]
+    response_mime_type: application/json
+    prompt_template: |-
+      Classify the sentiment of the input as one of: Positive, Neutral, Negative.
+      Reply in valid JSON only with keys: "label" and "confidence" (0..1).
+
+      Input:
+      {input}

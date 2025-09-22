@@ -1,0 +1,25 @@
+﻿[
+  {
+    "id": "sum_1",
+    "type": "summarize",
+    "task": "Summarize the following in one sentence.",
+    "input": "The product launch moved from Sep 30 to Oct 7 due to QA issues.",
+    "max_words": 25,
+    "keywords": ["launch", "Oct 7"]
+  },
+  {
+    "id": "sum_2",
+    "type": "summarize",
+    "task": "Summarize the following in one sentence.",
+    "input": "Board meeting Thursday 10am PT, Zoom link emailed to executives.",
+    "max_words": 25,
+    "keywords": ["Thursday", "10am"]
+  },
+  {
+    "id": "cls_1",
+    "type": "classify",
+    "task": "Classify sentiment.",
+    "input": "I'm thrilled with the new update; it fixed every bug I had!",
+    "expected_label": "Positive"
+  }
+]
