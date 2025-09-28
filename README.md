@@ -219,7 +219,7 @@ Append a new block to `prompts/variants.yaml`, e.g.:
 
 ---
 
-## 🧠 Design Notes (Explain Like I’m Five)
+## 🧠 Design Notes
 
 - **Cases** = small tasks (summarize/classify).
 - **Variants** = different ways to ask the model (baseline, rules/rubric, example‑driven, JSON‑only).
