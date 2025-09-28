@@ -172,8 +172,9 @@ if not (os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")):
         icon="🔑",
     )
     st.stop()
-
-client = GeminiClient(model=defaults.get("model", None))
+    
+model_name = defaults.get("model") or os.getenv("GEMINI_MODEL") or "gemini-2.0-flash"
+client = GeminiClient(model=model_name)
 
 left, right = st.columns([1, 1.6], gap="large")
 

@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[2]
 # Always load .env from repo root (works in Streamlit/CLI/pytest)
 load_dotenv(ROOT / ".env", override=False)
 
-DEFAULT_MODEL = os.getenv("GEMINI_MODEL", "gemini-1.5-flash")
+DEFAULT_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.0-flash")
 
 
 def _get_api_key(passed: Optional[str]) -> str:
